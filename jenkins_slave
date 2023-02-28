@@ -8,12 +8,7 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-                script{
-                    def file = readFile(file: 'data.txt')
-                    def lines = file.readLines()
-                    
-                    sh 'python myscript.py ${lines.get(0)} --age ${lines.get(1)}'
-                }
+                 sh 'python myscript.py ${NAME} --age ${Ages}'
             }
         }
     }
