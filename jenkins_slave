@@ -10,8 +10,9 @@ pipeline {
             steps {
                 script{
                     def file = readFile(file: 'data.txt')
-                    echo file
-                    sh 'python myscript.py ${NAME} --age ${Ages}'
+                    def lines = file.readLines()
+                    
+                    sh 'python myscript.py ${lines.get(0)} --age ${lines.get(1)}'
                 }
             }
         }
